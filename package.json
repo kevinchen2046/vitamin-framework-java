@@ -1,0 +1,12 @@
+{
+  "name": "vitamin-framework-java",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "javac Main.java & java Main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
