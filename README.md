@@ -42,4 +42,33 @@ JAVA的注解特性，这个跟C#是一样的
 
 ### 关于反射
 JAVA不能进行全局反射
-可以使用第三方`https://github.com/ronmamo/reflections`;
+可以使用第三方`https://github.com/ronmamo/reflections`;但此库依赖项较多,当前项目不宜引用
+
+### 关于Vitamin
+这是一个依赖注入的简易框架实现
+用法实例
+```java
+//注入模型
+Vitamin.injectModel(ModelUser.class);
+//注入Command
+Vitamin.injectCmd(CmdRename.class);
+
+//取出一个视图
+ViewMain viewmain=(ViewMain)Vitamin.getView(ViewMain.class);
+//打开视图
+viewmain.enter();
+```
+ViewMain实现
+```java
+public class ViewMain extends ViewBase {
+
+    @Model
+    public ModelUser user;
+    
+    public void enter(){
+        super.enter();
+        Logger.debug("ViewMain->",user);
+        this.exec("user.rename","kevin.chen");
+    }
+}
+```

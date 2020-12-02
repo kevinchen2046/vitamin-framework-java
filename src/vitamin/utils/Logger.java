@@ -1,4 +1,4 @@
-package src.vitamin.utils;
+package vitamin.utils;
 
 public class Logger {
     

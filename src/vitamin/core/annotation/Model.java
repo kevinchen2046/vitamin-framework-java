@@ -1,4 +1,4 @@
-package src.vitamin.core.annotation;
+package vitamin.core.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
