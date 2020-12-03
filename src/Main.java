@@ -29,7 +29,7 @@ public class Main {
         Vitamin.injectModel(ModelUser.class);
         //注入Command
         Vitamin.injectCmd(CmdRename.class);
-        
+
         //取出一个视图
         ViewMain viewmain=(ViewMain)Vitamin.getView(ViewMain.class);
 
@@ -37,5 +37,7 @@ public class Main {
 
         //打开视图
         viewmain.enter();
+
+        //Vitamin.dealy(1000, ()->Logger.log("AAAAA"));
     }
 }

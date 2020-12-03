@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import vitamin.core.annotation.Model;
+import vitamin.core.Tick;
 import vitamin.core.annotation.CmdRoute;
 
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class Vitamin {
         if (!modelmap.containsKey(name)) {
             modelmap.put(name, instance);
         }
+        instance.initialize();
         Logger.info("Model [", name, "] 已注册.");
         return instance;
     }
@@ -98,5 +100,19 @@ public class Vitamin {
         if (cmdmap.containsKey(name)) {
             cmdmap.get(name).exec(args);
         }
+    }
+
+    public static Tick dealy(int time,Runnable callback){
+        return new Tick().delay(time, callback);
+    }
+
+    public static Tick loop(int time,Runnable callback){
+        return new Tick().loop(time, callback);
+    }
+    public static Tick loop(int time,Runnable callback,int times){
+        return new Tick().loop(time, callback,times);
+    }
+    public static Tick loop(int time,Runnable callback,int times,Runnable complete){
+        return new Tick().loop(time, callback,times,complete);
     }
 }
