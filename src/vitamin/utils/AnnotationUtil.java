@@ -11,9 +11,20 @@ public class AnnotationUtil{
      */
     public static ArrayList<Annotation> getAnnotationsInField(Class clazz,Class annotationClazz){
         ArrayList<Annotation> results =new ArrayList<Annotation>();
-        Field[] fields=clazz.getFields();
+        Field[] fields=null;
+        try {
+            fields=clazz.getFields();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        if(fields==null) return results;
         for(Field field : fields){
-            Annotation annotation=field.getAnnotation(annotationClazz);
+            Annotation annotation=null;
+            try {
+                annotation=field.getAnnotation(annotationClazz);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
             results.add(annotation);
         }
         return results;
@@ -43,7 +54,12 @@ public class AnnotationUtil{
         ArrayList results =new ArrayList();
         Method[] methods = clazz.getMethods();// 获得方法对象
         for(Method method : methods){
-            Annotation annotation=method.getAnnotation(annotationClazz);
+            Annotation annotation=null;
+            try {
+                annotation=method.getAnnotation(annotationClazz);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
             results.add(annotation);
         }
         return results;

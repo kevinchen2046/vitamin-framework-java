@@ -24,13 +24,17 @@ public class Main {
         // Logger.mark("Hello World",123);
         // Logger.record("Hello World",123);
 
+        //由于没有全局反射 这里只能手动注入
         //注入模型
         Vitamin.injectModel(ModelUser.class);
         //注入Command
         Vitamin.injectCmd(CmdRename.class);
-
+        
         //取出一个视图
         ViewMain viewmain=(ViewMain)Vitamin.getView(ViewMain.class);
+
+        Logger.colour("------------------ Vitamin Start ------------------");
+
         //打开视图
         viewmain.enter();
     }

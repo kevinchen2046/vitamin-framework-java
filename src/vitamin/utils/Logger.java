@@ -70,4 +70,22 @@ public class Logger {
         }
         System.out.println("\033[0m");
     }
+    
+    public static void colour(String content){
+        colour(content, "");
+    }
+
+    public static void colour(String content,String join){
+        int length=content.length();
+        int i=0;
+        int color=1;
+        while(i<length){
+            char c=content.charAt(i);
+            System.out.print("\033[3"+color+"m"+c+join+"\033[0m");
+            color++;
+            if(color>6) color=1;
+            i++;
+        }
+        System.out.println();
+    }
 }

@@ -1,7 +1,9 @@
 package test;
+
 import vitamin.utils.Logger;
 import vitamin.base.ViewBase;
 import vitamin.core.annotation.Model;
+
 public class ViewMain extends ViewBase {
 
     @Model

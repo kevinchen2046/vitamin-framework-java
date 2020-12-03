@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "javac -sourcepath src -encoding UTF-8 src/Main.java & java -cp src Main"
+    "build": "javac -sourcepath src -encoding UTF-8 src/Main.java & java -cp src Main",
+    "publish":"jar cvf bin/vitamin.jar -C src/vitamin/ ."
   },
   "keywords": [],
   "author": "",
