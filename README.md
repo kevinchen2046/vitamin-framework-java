@@ -5,13 +5,13 @@
 - 配置环境变量
 
 ### 编译
-`javac Main.java`
-`java Main`
+`javac -sourcepath src -encoding UTF-8 src/Main.java `
+`java -cp src Main`
 或者
 `npm run build`(需要安装nodejs环境)
 
 ### 书写规范
-跟`ActionScript`类似
+跟`ActionScript3`类似
 - 包名需要跟文件夹路径统一
 - 开放的类名需要跟文件名字统一
   
@@ -40,12 +40,13 @@
   - 不支持函数默认参数 只能用重载实现
 
 ### 实现装饰器
-JAVA的注解特性，这个跟C#是一样的
+  - JAVA的注解特性，这个跟C#是一样的
 
 ### 关于反射
-JAVA不能进行全局反射
-可以使用第三方`https://github.com/ronmamo/reflections`;但此库依赖项较多,当前项目不宜引用
 基于全局反射可以实现自动注入
+但JAVA不能进行全局反射
+可以使用第三方`https://github.com/ronmamo/reflections`;
+但此库依赖项较多,当前项目不宜引用
 
 ### 关于Vitamin
 这是一个依赖注入的简易框架实现
@@ -70,7 +71,7 @@ public class ViewMain extends ViewBase {
     
     public void enter(){
         super.enter();
-        Logger.debug("ViewMain->",user);
+        Logger.debug("ViewMain->",user.uid);
         this.exec("user.rename","kevin.chen");
     }
 }
