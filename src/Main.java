@@ -31,10 +31,10 @@ public class Main {
         Vitamin.injectCmd(CmdRename.class);
 
         //取出一个视图
-        ViewMain viewmain=(ViewMain)Vitamin.getView(ViewMain.class);
+        ViewMain viewmain=Vitamin.getView(ViewMain.class);
 
         Logger.colour("------------------ Vitamin Start ------------------");
-
+        
         //打开视图
         viewmain.enter();
 

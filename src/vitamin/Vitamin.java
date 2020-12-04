@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 
 import vitamin.core.annotation.Model;
 import vitamin.core.Tick;
+import vitamin.core.TickTask;
 import vitamin.core.annotation.CmdRoute;
 
 import java.util.HashMap;
@@ -65,7 +66,7 @@ public class Vitamin {
     /**
      * 取View 通过此方法取出的view才具有注入属性
      */
-    public static ViewBase getView(Class viewClass) {
+    public static <T> T getView(Class<T> viewClass) {
         String name = viewClass.getName();
         if (!viewmap.containsKey(name)) {
             viewmap.put(name, (ViewBase) Util.createInstance(viewClass));
@@ -90,7 +91,7 @@ public class Vitamin {
                 }
             }
         }
-        return viewmap.get(name);
+        return (T)viewmap.get(name);
     }
 
     /**
@@ -102,17 +103,19 @@ public class Vitamin {
         }
     }
 
-    public static Tick dealy(int time,Runnable callback){
-        return new Tick().delay(time, callback);
+    public static TickTask dealy(int time,Runnable callback){
+        return Tick.delay(time, callback);
     }
 
-    public static Tick loop(int time,Runnable callback){
-        return new Tick().loop(time, callback);
+    public static TickTask loop(int time,Runnable callback){
+        return Tick.loop(time, callback);
     }
-    public static Tick loop(int time,Runnable callback,int times){
-        return new Tick().loop(time, callback,times);
+    
+    public static TickTask loop(int time,Runnable callback,int times){
+        return Tick.loop(time, callback,times);
     }
-    public static Tick loop(int time,Runnable callback,int times,Runnable complete){
-        return new Tick().loop(time, callback,times,complete);
+
+    public static TickTask loop(int time,Runnable callback,int times,Runnable complete){
+        return Tick.loop(time, callback,times,complete);
     }
 }
